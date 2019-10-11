@@ -12,12 +12,9 @@
 </head>
 
 <body>
-    <div id="content">
-        <div class="top">
-            <textarea id="text" cols="30" rows="40" v-model="text" placeholder="请输入markdown文本"></textarea>
-        </div>
-        <hr>
+    <div id="app">
         <div class="content-tool">
+            <label>代码高亮主题：</label>
             <el-select v-model="theme" placeholder="代码高亮主题" @change="changeHighlight">
                 <el-option v-for="item in themes" :key="item" :label="item" :value="item">
                 </el-option>
@@ -25,11 +22,15 @@
             <el-button style="margin-left: 10px;" type="primary" @click="copy">一键复制</el-button>
             <el-button type="primary" @click="copyHtml">源码复制</el-button>
         </div>
-        <div class="bottom">
-            <div id="content-body" v-html="html"></div>
+        <div id="content">
+            <div class="left">
+                <textarea id="text" cols="30" rows="40" v-model="text" placeholder="请输入markdown文本"></textarea>
+            </div>            
+            <div class="right">
+                <div id="content-body" v-html="html"></div>
+            </div>
         </div>
     </div>
-    <div id="content"></div>
     <script src="js/vue.js"></script>
     <script src="js/element-ui.js"></script>
     <script src="./js/highlight.min.js"></script>
@@ -44,7 +45,7 @@
             }
         });
         var vm = new Vue({
-            el: "#content",
+            el: "#app",
             data: {
                 text: '',
                 html: '',

@@ -180,21 +180,29 @@ code, pre, samp, tt {
 
 #content {
     display: flex;
-    flex-direction: column
+    flex-direction: row
 }
-
+.right{
+    width: 50vw;
+}
 #content-body {
     padding: 20px;
-    height: 50vh;
+    height: auto;
+    height: 90vh;
+    /* width: 49vw; */
+    overflow: auto;    
+    border-left: 1px solid #eee;
 }
 
 textarea {
-    width: 100%;
+    width: 49vw;
     font-size: 14px;
     border: none;
     padding: 20px;
-    max-height: 50vh;
+    height: auto;
+    max-height: 90vh;
     outline: none;
+    resize: none;  
     /*去掉默认input焦点边框*/
 }
 
