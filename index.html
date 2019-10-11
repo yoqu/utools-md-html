@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="./css/element-ui.css">
+    <link rel="stylesheet" href="./css/highlight/github.css" id="highlight-style">
+    <link rel="stylesheet" href="./css/theme/github.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div id="content">
+        <div class="top">
+            <textarea id="text" cols="30" rows="40" v-model="text" placeholder="请输入markdown文本"></textarea>
+        </div>
+        <hr>
+        <div class="content-tool">
+            <el-select v-model="theme" placeholder="代码高亮主题" @change="changeHighlight">
+                <el-option v-for="item in themes" :key="item" :label="item" :value="item">
+                </el-option>
+            </el-select>
+            <el-button style="margin-left: 10px;" type="primary" @click="copy">一键复制</el-button>
+            <el-button type="primary" @click="copyHtml">源码复制</el-button>
+        </div>
+        <div class="bottom">
+            <div id="content-body" v-html="html"></div>
+        </div>
+    </div>
+    <div id="content"></div>
+    <script src="js/vue.js"></script>
+    <script src="js/element-ui.js"></script>
+    <script src="./js/highlight.min.js"></script>
+    <script src="js/marked.min.js"></script>
+    <script>
+        // highlight.js的同步高亮
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            langPrefix: "hljs ",
+            highlight: function (code, lang, callback) {
+                return hljs.highlightAuto(code).value;
+            }
+        });
+        var vm = new Vue({
+            el: "#content",
+            data: {
+                text: '',
+                html: '',
+                theme: 'github',
+                themes: ["a11y-dark",
+                    "a11y-light",
+                    "agate",
+                    "an-old-hope",
+                    "androidstudio",
+                    "arduino-light",
+                    "arta",
+                    "ascetic",
+                    "atelier-cave-dark",
+                    "atelier-cave-light",
+                    "atelier-dune-dark",
+                    "atelier-dune-light",
+                    "atelier-estuary-dark",
+                    "atelier-estuary-light",
+                    "atelier-forest-dark",
+                    "atelier-forest-light",
+                    "atelier-heath-dark",
+                    "atelier-heath-light",
+                    "atelier-lakeside-dark",
+                    "atelier-lakeside-light",
+                    "atelier-plateau-dark",
+                    "atelier-plateau-light",
+                    "atelier-savanna-dark",
+                    "atelier-savanna-light",
+                    "atelier-seaside-dark",
+                    "atelier-seaside-light",
+                    "atelier-sulphurpool-dark",
+                    "atelier-sulphurpool-light",
+                    "atom-one-dark-reasonable",
+                    "atom-one-dark",
+                    "atom-one-light",
+                    "brown-paper",
+                    "brown-papersq",
+                    "codepen-embed",
+                    "color-brewer",
+                    "darcula",
+                    "dark",
+                    "darkula",
+                    "default",
+                    "docco",
+                    "dracula",
+                    "far",
+                    "foundation",
+                    "github-gist",
+                    "github",
+                    "gml",
+                    "googlecode",
+                    "grayscale",
+                    "gruvbox-dark",
+                    "gruvbox-light",
+                    "hopscotch",
+                    "hybrid",
+                    "idea",
+                    "ir-black",
+                    "isbl-editor-dark",
+                    "isbl-editor-light",
+                    "kimbie.dark",
+                    "kimbie.light",
+                    "lightfair",
+                    "magula",
+                    "mono-blue",
+                    "monokai-sublime",
+                    "monokai",
+                    "night-owl",
+                    "nord",
+                    "obsidian",
+                    "ocean",
+                    "paraiso-dark",
+                    "paraiso-light",
+                    "pojoaque",
+                    "pojoaque",
+                    "purebasic",
+                    "qtcreator_dark",
+                    "qtcreator_light",
+                    "railscasts",
+                    "rainbow",
+                    "routeros",
+                    "school-book",
+                    "school-book",
+                    "shades-of-purple",
+                    "solarized-dark",
+                    "solarized-light",
+                    "sunburst",
+                    "tomorrow-night-blue",
+                    "tomorrow-night-bright",
+                    "tomorrow-night-eighties",
+                    "tomorrow-night",
+                    "tomorrow",
+                    "vs",
+                    "vs2015",
+                    "xcode",
+                    "xt256",
+                    "zenburs"
+                ]
+            },
+            methods: {
+                changeHighlight: function () {
+                    console.log('高亮显示')
+                    document.getElementById("highlight-style").href = "./css/highlight/" + this.theme + ".css";
+                },
+                copy: function () {
+                    window.writeHtml(this.html)
+                    this.$message({
+                        message: '复制成功',
+                        type: 'success'
+                    });
+                },
+                copyHtml: function () {
+                    window.writeText(this.html)
+                    this.$message({
+                        message: '复制成功',
+                        type: 'success'
+                    });
+                }
+            },
+            watch: {
+                text: function (t) {
+                    this.html = marked(t);
+                    hljs.initHighlighting()
+                }
+            }
+        });
+        utools.onPluginEnter(({ code, type, payload }) => {
+            console.log('用户进入插件', code, type, payload)
+            var clipText = window.readText()
+            consoe.log(clipText)
+            if (clipText != null && clipText != "") {
+                vm.text = clipText
+            }
+        })
+    </script>
+</body>
+
+</html>

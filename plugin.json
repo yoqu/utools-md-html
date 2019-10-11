@@ -1,0 +1,16 @@
+{
+	"pluginName": "Markdown转Html",
+	"description": "实现markdown转Html工具",
+	"main": "index.html",
+	"author": "yqou",
+	"logo":"logo.png",
+	"version": "0.0.1",
+	"preload":"js/preload.js",
+	"features": [
+	    {
+			"code": "markdown2html",
+			"explain": "markdown转Html",
+	        "cmds":["md", "markdown"]
+	    }
+	]
+}

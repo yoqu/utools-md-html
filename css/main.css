@@ -1,0 +1,203 @@
+html {
+    font-size: 14px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 1rem;
+    line-height: 1.42857143;
+    overflow-x: hidden;
+    background-image: inherit;
+    background-size: inherit;
+    background-attachment: inherit;
+    background-origin: inherit;
+    background-clip: inherit;
+    background-color: inherit;
+    tab-size: 4;
+    background-position: inherit inherit;
+    background-repeat: inherit inherit;
+}
+
+iframe {
+    margin: auto;
+}
+
+a.url {
+    word-break: break-all;
+}
+
+a:active, a:hover {
+    outline: 0px;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+button, input, select, textarea {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-variant-caps: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    line-height: inherit;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    line-height: normal;
+    padding: 0px;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+p {
+    line-height: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    break-after: avoid-page;
+    break-inside: avoid;
+    orphans: 2;
+}
+
+p {
+    orphans: 4;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+h5 {
+    font-size: 1.2rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+a {
+    cursor: pointer;
+}
+
+figure {
+    overflow-x: auto;
+    margin: 1.2em 0px;
+    max-width: calc(100% + 16px);
+    padding: 0px;
+}
+
+figure>table {
+    margin: 0px !important;
+}
+
+tr {
+    break-inside: avoid;
+    break-after: auto;
+}
+
+thead {
+    display: table-header-group;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+    overflow: auto;
+    break-inside: auto;
+    text-align: left;
+    border-spacing: 0px;
+}
+
+li div {
+    padding-top: 0px;
+}
+
+blockquote {
+    margin: 1rem 0px;
+}
+
+li .mathjax-block, li p {
+    margin: 0.5rem 0px;
+}
+
+li {
+    margin: 0px;
+    position: relative;
+}
+
+blockquote> :last-child {
+    margin-bottom: 0px;
+}
+
+blockquote> :first-child, li> :first-child {
+    margin-top: 0px;
+}
+
+a img, img a {
+    cursor: pointer;
+}
+
+table tr th {
+    border-bottom-width: 0px;
+}
+
+code, pre, samp, tt {
+    font-family: var(--monospace);
+}
+
+.highlight td, .highlight tr {
+    border: 0px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column
+}
+
+#content-body {
+    padding: 20px;
+    height: 50vh;
+}
+
+textarea {
+    width: 100%;
+    font-size: 14px;
+    border: none;
+    padding: 20px;
+    max-height: 50vh;
+    outline: none;
+    /*去掉默认input焦点边框*/
+}
+
+.content-tool {
+    padding-left: 20px;
+}
