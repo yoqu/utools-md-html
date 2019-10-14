@@ -182,15 +182,17 @@ code, pre, samp, tt {
     display: flex;
     flex-direction: row
 }
-.right{
+
+.right {
     width: 50vw;
 }
+
 #content-body {
     padding: 20px;
     height: auto;
     height: 90vh;
     /* width: 49vw; */
-    overflow: auto;    
+    overflow: auto;
     border-left: 1px solid #eee;
 }
 
@@ -202,10 +204,12 @@ textarea {
     height: auto;
     max-height: 90vh;
     outline: none;
-    resize: none;  
-    /*去掉默认input焦点边框*/
+    resize: none;
+    color: #333;
 }
 
 .content-tool {
     padding-left: 20px;
+    background: #fff;
+    color: #333;
 }

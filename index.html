@@ -7,7 +7,7 @@
     </style>
     <link rel="stylesheet" href="./css/element-ui.css">
     <link rel="stylesheet" href="./css/highlight/github.css" id="highlight-style">
-    <link rel="stylesheet" href="./css/theme/github.css">
+    <link rel="stylesheet" href="./css/theme/github.css" id="theme-style">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -15,7 +15,12 @@
     <div id="app">
         <div class="content-tool">
             <label>代码高亮主题：</label>
-            <el-select v-model="theme" placeholder="代码高亮主题" @change="changeHighlight">
+            <el-select v-model="codeTheme" placeholder="代码高亮主题" @change="changeHighlight">
+                <el-option v-for="item in codeThemes" :key="item" :label="item" :value="item">
+                </el-option>
+            </el-select>
+            <label>界面主题：</label>
+            <el-select v-model="theme" placeholder="代码高亮主题" @change="changeTheme">
                 <el-option v-for="item in themes" :key="item" :label="item" :value="item">
                 </el-option>
             </el-select>
@@ -49,8 +54,10 @@
             data: {
                 text: '',
                 html: '',
-                theme: 'github',
-                themes: ["a11y-dark",
+                theme:'github',
+                themes:['github','night'],
+                codeTheme: 'github',
+                codeThemes: ["a11y-dark",
                     "a11y-light",
                     "agate",
                     "an-old-hope",
@@ -146,9 +153,11 @@
                 ]
             },
             methods: {
-                changeHighlight: function () {
-                    console.log('高亮显示')
-                    document.getElementById("highlight-style").href = "./css/highlight/" + this.theme + ".css";
+                changeTheme:function(){
+                    document.getElementById("theme-style").href = "./css/theme/" + this.theme + ".css";
+                },
+                changeHighlight: function () {                   
+                    document.getElementById("highlight-style").href = "./css/highlight/" + this.codeTheme + ".css";
                 },
                 copy: function () {
                     window.writeHtml(this.html)
@@ -180,6 +189,7 @@
                 vm.text = clipText
             }
         })
+        utools.setExpendWidth(1900)
     </script>
 </body>
 
